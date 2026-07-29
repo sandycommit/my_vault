@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ item.display_title }} · My Vault{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+    <a href="{% url 'vault:chat' %}" class="back-link">← Back</a>
+    <div class="item-feed static-feed">
+        {% include "vault/components/item_card.html" %}
+    </div>
+</div>
+{% endblock %}

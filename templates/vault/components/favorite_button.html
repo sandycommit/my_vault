@@ -1,0 +1,14 @@
+<form
+    method="post"
+    action="{% url 'vault:item_favorite' item.pk %}"
+    class="ajax-form favorite-form"
+    {% if not remove_on_unfavorite %}data-ajax-swap="self"{% endif %}
+>
+    {% csrf_token %}
+    <button
+        type="submit"
+        class="icon-btn favorite-btn{% if item.is_favorite %} is-active{% endif %}"
+        aria-pressed="{{ item.is_favorite|yesno:'true,false' }}"
+        aria-label="{% if item.is_favorite %}Remove from favorites{% else %}Add to favorites{% endif %}"
+    >{% if item.is_favorite %}★{% else %}☆{% endif %}</button>
+</form>

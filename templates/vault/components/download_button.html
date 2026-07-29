@@ -1,0 +1,3 @@
+{% if item.is_file_item %}
+<a class="icon-btn" href="{% url 'vault:item_download' item.pk %}" title="Download" aria-label="Download {{ item.original_filename }}">⬇</a>
+{% endif %}

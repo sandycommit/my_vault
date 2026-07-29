@@ -1,0 +1,24 @@
+<div class="item-actions">
+    {% if item.is_deleted %}
+        <form method="post" action="{% url 'vault:item_restore' item.pk %}" class="ajax-form inline-form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-ghost btn-small">Restore</button>
+        </form>
+        <form
+            method="post"
+            action="{% url 'vault:item_permanent_delete' item.pk %}"
+            class="ajax-form inline-form"
+            data-confirm="Permanently delete this item? This cannot be undone."
+        >
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-small">Delete permanently</button>
+        </form>
+    {% else %}
+        {% include "vault/components/favorite_button.html" %}
+        {% include "vault/components/download_button.html" %}
+        {% if item.is_editable %}
+            <a class="icon-btn" href="{% url 'vault:item_edit' item.pk %}" title="Edit" aria-label="Edit">✏️</a>
+        {% endif %}
+        {% include "vault/components/delete_button.html" %}
+    {% endif %}
+</div>

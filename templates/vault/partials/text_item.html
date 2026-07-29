@@ -1,0 +1,6 @@
+<div class="item-body item-text">{{ item.content|linebreaksbr }}</div>
+{% if item.tag_list %}
+<div class="item-tags">
+    {% for tag in item.tag_list %}<span class="tag-pill">{{ tag }}</span>{% endfor %}
+</div>
+{% endif %}

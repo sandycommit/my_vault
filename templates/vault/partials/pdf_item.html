@@ -1,0 +1,10 @@
+<div class="item-body item-pdf">
+    <div class="file-chip">
+        <span class="file-icon" aria-hidden="true">📕</span>
+        <div class="file-info">
+            <div class="file-name">{{ item.original_filename }}</div>
+            <div class="file-meta">{{ item.file_size|filesizeformat }} · PDF</div>
+        </div>
+    </div>
+    <iframe src="{% url 'vault:item_raw' item.pk %}" class="pdf-preview" title="{{ item.original_filename }}"></iframe>
+</div>

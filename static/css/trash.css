@@ -1,0 +1,15 @@
+/* Trashed items read as "on their way out" — slightly muted until restored
+   or permanently removed. */
+.trash-page .item-card,
+.list-page .item-card:has(.item-actions .btn-danger) {
+    opacity: 0.85;
+}
+
+.trash-note {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.list-page-header form.inline-form { margin-left: auto; }

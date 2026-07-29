@@ -1,0 +1,20 @@
+<article class="item-card" id="item-{{ item.id }}" data-item-id="{{ item.id }}">
+    {% if item.item_type == "text" %}
+        {% include "vault/partials/text_item.html" %}
+    {% elif item.item_type == "code" %}
+        {% include "vault/partials/code_item.html" %}
+    {% elif item.item_type == "link" %}
+        {% include "vault/partials/link_item.html" %}
+    {% elif item.item_type == "image" %}
+        {% include "vault/partials/image_item.html" %}
+    {% elif item.item_type == "pdf" %}
+        {% include "vault/partials/pdf_item.html" %}
+    {% else %}
+        {% include "vault/partials/file_item.html" %}
+    {% endif %}
+
+    <div class="item-meta">
+        <time class="item-time" datetime="{{ item.created_at|date:'c' }}">{{ item.created_at|date:"g:i A" }}</time>
+        {% include "vault/partials/item_actions.html" %}
+    </div>
+</article>

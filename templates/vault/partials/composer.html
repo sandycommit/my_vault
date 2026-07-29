@@ -1,0 +1,16 @@
+<div class="composer-wrapper">
+    {% include "vault/partials/attachment_menu.html" %}
+
+    <form method="post" action="{% url 'vault:save_text' %}" id="composer-form" class="composer-form">
+        {% csrf_token %}
+        <textarea
+            name="text"
+            id="composer-textarea"
+            class="composer-textarea"
+            placeholder="Write something..."
+            rows="1"
+            required
+        >{{ text_form.text.value|default:"" }}</textarea>
+        <button type="submit" class="composer-send" aria-label="Send">➤</button>
+    </form>
+</div>

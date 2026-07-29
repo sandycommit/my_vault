@@ -1,0 +1,33 @@
+.chat-page {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.item-feed {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 16px 16px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.date-separator {
+    display: flex;
+    justify-content: center;
+    margin: 14px 0 6px;
+}
+
+.date-separator span {
+    background: var(--surface-alt);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+}

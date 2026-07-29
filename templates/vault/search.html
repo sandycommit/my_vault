@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Search · My Vault{% endblock %}
+
+{% block content %}
+<div class="list-page search-page">
+    {% if query %}
+        <h1 class="page-title">Search results for '<span class="query-highlight">{{ query }}</span>'</h1>
+        <p class="search-summary">
+            {{ page_obj.paginator.count }} item{{ page_obj.paginator.count|pluralize }} found in your private vault
+        </p>
+
+        {% if items %}
+            <div class="item-feed static-feed">
+                {% include "vault/partials/item_feed.html" %}
+            </div>
+            {% include "vault/partials/pagination.html" %}
+        {% else %}
+            <div class="empty-state">
+                <h2>Not seeing what you're looking for?</h2>
+                <p>No items matched &ldquo;{{ query }}&rdquo;.</p>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="empty-state">
+            <div class="empty-state-icon" aria-hidden="true">🔍</div>
+            <h2>Search your vault</h2>
+            <p>Search across notes, filenames, and file types.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/search.js' %}"></script>
+{% endblock %}

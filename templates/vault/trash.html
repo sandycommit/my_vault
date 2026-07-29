@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Trash · My Vault{% endblock %}
+
+{% block content %}
+<div class="list-page">
+    <div class="list-page-header">
+        <h1 class="page-title">🗑 Trash</h1>
+        {% if items %}
+        <form
+            method="post"
+            action="{% url 'vault:empty_trash' %}"
+            class="inline-form"
+            data-confirm="Permanently delete everything in Trash? This cannot be undone."
+        >
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-small">Empty Trash</button>
+        </form>
+        {% endif %}
+    </div>
+
+    {% if items %}
+        <div class="item-feed static-feed">
+            {% include "vault/partials/item_feed.html" %}
+        </div>
+        {% include "vault/partials/pagination.html" %}
+        <p class="trash-note">Restore or permanently delete items here — Trash is not emptied automatically.</p>
+    {% else %}
+        <div class="empty-state">
+            <div class="empty-state-icon" aria-hidden="true">🗑</div>
+            <h2>Trash is empty.</h2>
+            <p>Deleted items show up here before they're gone for good.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

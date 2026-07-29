@@ -1,0 +1,11 @@
+<form method="get" action="{% url 'vault:search' %}" class="search-bar" role="search">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input
+        type="search"
+        name="q"
+        value="{{ request.GET.q|default:'' }}"
+        placeholder="Search everything..."
+        aria-label="Search everything"
+        autocomplete="off"
+    >
+</form>

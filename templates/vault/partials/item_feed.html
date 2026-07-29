@@ -1,0 +1,7 @@
+{% load vault_tags %}
+{% for item in items %}
+    {% ifchanged item.created_at|day_label %}
+        {% include "vault/partials/date_separator.html" with label=item.created_at|day_label %}
+    {% endifchanged %}
+    {% include "vault/components/item_card.html" %}
+{% endfor %}

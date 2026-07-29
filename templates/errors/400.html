@@ -1,0 +1,17 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bad request · My Vault</title>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body class="error-page">
+    <div class="error-card">
+        <div class="error-icon" aria-hidden="true">⚠️</div>
+        <h1>400 — Bad request</h1>
+        <p>That request couldn't be understood.</p>
+        <a href="{% url 'vault:chat' %}" class="btn btn-primary">Back to My Vault</a>
+    </div>
+</body>
+</html>

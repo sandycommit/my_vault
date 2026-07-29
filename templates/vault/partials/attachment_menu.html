@@ -1,0 +1,5 @@
+<form method="post" action="{% url 'vault:upload_file' %}" enctype="multipart/form-data" id="upload-form" class="upload-form">
+    {% csrf_token %}
+    <label class="composer-attach" for="upload-input" title="Attach a file" aria-label="Attach a file">📎</label>
+    <input type="file" name="file" id="upload-input" hidden>
+</form>

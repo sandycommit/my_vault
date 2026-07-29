@@ -1,0 +1,17 @@
+@media (max-width: 640px) {
+    .vault-header { padding: 10px 12px; gap: 10px; }
+    .brand { font-size: 0.95rem; }
+    .search-bar { max-width: none; padding: 6px 12px; }
+    .item-card { max-width: 92%; }
+    .list-page { padding: 16px 12px 32px; }
+    .composer-wrapper { padding: 10px 12px; }
+    .toast-stack { width: 92vw; bottom: 88px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .pdf-preview { height: 220px; }
+    .login-card { padding: 24px; }
+}
+
+@media (max-width: 400px) {
+    .brand { font-size: 0.85rem; }
+    .icon-btn { padding: 6px; font-size: 1rem; }
+}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Edit · My Vault{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+    <a href="{% url 'vault:item_detail' item.pk %}" class="back-link">← Cancel</a>
+    <form method="post" class="edit-form">
+        {% csrf_token %}
+        <textarea name="text" class="composer-textarea edit-textarea" rows="8" required>{{ form.text.value|default:"" }}</textarea>
+        {% if form.text.errors %}
+            <p class="form-error">{{ form.text.errors.0 }}</p>
+        {% endif %}
+        <div class="edit-form-actions">
+            <a href="{% url 'vault:item_detail' item.pk %}" class="btn btn-ghost">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

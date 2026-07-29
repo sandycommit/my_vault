@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Settings · My Vault{% endblock %}
+
+{% block content %}
+<div class="list-page settings-page">
+    <h1 class="page-title">⚙️ Settings &amp; Storage</h1>
+
+    <section class="settings-section">
+        <h2>Vault contents</h2>
+        <dl class="stats-grid">
+            <div class="stat-tile"><dt>Total items</dt><dd>{{ report.total_items }}</dd></div>
+            <div class="stat-tile"><dt>Text notes</dt><dd>{{ report.text_items }}</dd></div>
+            <div class="stat-tile"><dt>Files</dt><dd>{{ report.file_items }}</dd></div>
+            <div class="stat-tile"><dt>Images</dt><dd>{{ report.image_items }}</dd></div>
+            <div class="stat-tile"><dt>Favorites</dt><dd>{{ report.favorite_items }}</dd></div>
+            <div class="stat-tile"><dt>In Trash</dt><dd>{{ report.trash_items }}</dd></div>
+        </dl>
+    </section>
+
+    <section class="settings-section">
+        <h2>Filesystem storage</h2>
+        <dl class="stats-grid">
+            <div class="stat-tile"><dt>Media used</dt><dd>{{ report.media_bytes|filesizeformat }}</dd></div>
+            <div class="stat-tile"><dt>Trash bytes</dt><dd>{{ report.trash_bytes|filesizeformat }}</dd></div>
+        </dl>
+    </section>
+
+    <section class="settings-section">
+        <h2>Database storage budget</h2>
+        <p>PostgreSQL stores metadata, text, and search indexes only — uploaded files never touch the database.</p>
+        <div
+            class="storage-bar"
+            role="img"
+            aria-label="Database usage: {{ report.database_mb }} of {{ report.database_budget_mb }} MB"
+        >
+            <div class="storage-bar-fill" style="width: {% widthratio report.database_mb report.database_budget_mb 100 %}%"></div>
+        </div>
+        <p class="storage-bar-caption">{{ report.database_mb }} MB used of a {{ report.database_budget_mb }} MB budget</p>
+        {% if report.database_mb >= report.database_warning_mb %}
+            <p class="storage-warning">⚠️ Database is approaching its storage budget. Consider archiving or pruning old items.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

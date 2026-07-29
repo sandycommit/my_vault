@@ -1,0 +1,19 @@
+{% load vault_tags %}
+<div class="item-body item-file">
+    <div class="file-chip">
+        <span class="file-icon" aria-hidden="true">{{ item.item_type|item_icon }}</span>
+        <div class="file-info">
+            <div class="file-name">{{ item.original_filename }}</div>
+            <div class="file-meta">{{ item.file_size|filesizeformat }}{% if item.mime_type %} · {{ item.mime_type }}{% endif %}</div>
+        </div>
+    </div>
+    {% if item.item_type == "video" %}
+        <video controls preload="metadata" class="item-video-preview">
+            <source src="{% url 'vault:item_raw' item.pk %}" type="{{ item.mime_type }}">
+        </video>
+    {% elif item.item_type == "audio" %}
+        <audio controls preload="metadata" class="item-audio-preview">
+            <source src="{% url 'vault:item_raw' item.pk %}" type="{{ item.mime_type }}">
+        </audio>
+    {% endif %}
+</div>

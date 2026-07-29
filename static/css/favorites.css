@@ -1,0 +1,10 @@
+/* Favorites is a static (non-scrolling-container) list, so cards get a bit
+   more breathing room than the live chat feed. */
+.favorites-page .static-feed,
+.list-page .static-feed {
+    gap: 10px;
+}
+
+.list-page .item-card .favorite-btn.is-active {
+    text-shadow: 0 0 8px rgba(245, 166, 35, 0.5);
+}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Favorites · My Vault{% endblock %}
+
+{% block content %}
+<div class="list-page">
+    <h1 class="page-title">⭐ Favorites</h1>
+
+    {% if items %}
+        <div class="item-feed static-feed">
+            {% include "vault/partials/item_feed.html" with remove_on_unfavorite=True %}
+        </div>
+        {% include "vault/partials/pagination.html" %}
+    {% else %}
+        <div class="empty-state">
+            <div class="empty-state-icon" aria-hidden="true">⭐</div>
+            <h2>No favorites yet.</h2>
+            <p>Tap the star on anything in your vault to pin it here.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

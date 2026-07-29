@@ -1,0 +1,11 @@
+<div class="item-body item-image">
+    <a href="{% url 'vault:item_raw' item.pk %}" target="_blank" rel="noopener noreferrer">
+        <img
+            src="{% url 'vault:item_raw' item.pk %}"
+            alt="{{ item.original_filename }}"
+            loading="lazy"
+            class="item-image-preview"
+        >
+    </a>
+    <div class="item-file-meta">{{ item.original_filename }} · {{ item.file_size|filesizeformat }}</div>
+</div>

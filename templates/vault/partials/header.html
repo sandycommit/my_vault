@@ -1,0 +1,23 @@
+<header class="vault-header">
+    <a href="{% url 'vault:chat' %}" class="brand">🔐 My Vault</a>
+
+    {% include "vault/partials/search_bar.html" %}
+
+    <nav class="header-actions">
+        <a href="{% url 'vault:favorites' %}" class="icon-btn" title="Favorites" aria-label="Favorites">⭐</a>
+        <a href="{% url 'vault:trash' %}" class="icon-btn" title="Trash" aria-label="Trash">🗑</a>
+        <button type="button" class="icon-btn" data-options-toggle aria-haspopup="dialog" aria-label="More options">⋮</button>
+    </nav>
+</header>
+
+<dialog id="options-modal" class="options-modal">
+    <div class="options-modal-header">
+        <span>Options</span>
+        <button type="button" class="icon-btn" id="options-modal-close" aria-label="Close">✕</button>
+    </div>
+    <a href="{% url 'vault:settings' %}" class="menu-item">⚙️ Settings</a>
+    <form method="post" action="{% url 'logout' %}" class="menu-item-form">
+        {% csrf_token %}
+        <button type="submit" class="menu-item menu-item-button">🚪 Sign out</button>
+    </form>
+</dialog>
